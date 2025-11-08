@@ -45,15 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 class Finansije {
 
-    constructor(brRacuna, ime, prezime, stanje, pin) {
+    constructor(brRacuna, ime, prezime, stanje, pin, zakljucan = false, transakcije = []) {
 
         this.brRacuna = brRacuna;
         this.ime = ime;
         this.prezime = prezime;
         this.stanje = stanje;
         this.pin = pin;
-        this.zakljucan = false;
-        this.transakcije = [];
+        this.zakljucan = zakljucan;
+        this.transakcije = transakcije;
 
     }
 
@@ -64,6 +64,7 @@ class Finansije {
 
         this.stanje += iznos;
         this.transakcije.push(`[PRIHOD] +${iznos} RSD | ${opis} | Novo stanje: ${this.stanje} RSD`);
+        this.sacuvaj();
 
         return `Uspešno dodat prihod: +${iznos} RSD. Novo stanje: ${this.stanje} RSD.`;
     }
@@ -76,6 +77,7 @@ class Finansije {
 
         this.stanje -= iznos;
         this.transakcije.push(`[RASHOD] -${iznos} RSD | ${opis} | Novo stanje: ${this.stanje} RSD`);
+        this.sacuvaj();
 
         return `Uspešno skinuto ${iznos} RSD. Novo stanje: ${this.stanje} RSD.`;
     }
@@ -84,8 +86,9 @@ class Finansije {
 
         if (this.zakljucan) return "Račun je već zaključan.";
         this.zakljucan = true;
-
         this.transakcije.push("[OBAVEŠTENJE] Račun zaključan.");
+        this.sacuvaj();
+
         return "Račun je zaključan.";
 
     }
@@ -97,11 +100,13 @@ class Finansije {
 
             this.zakljucan = false;
             this.transakcije.push("[OBAVEŠTENJE] Račun uspešno otključan.");
+            this.sacuvaj();
             return "Račun je uspešno otključan.";
 
         } else {
 
             this.transakcije.push("[POKUŠAJ] Neispravan PIN pri otključavanju.");
+            this.sacuvaj();
             return "Neispravan PIN! Pokušaj ponovo.";
 
         }
@@ -113,9 +118,28 @@ class Finansije {
         return this.transakcije;
 
     }
+
+    sacuvaj() {
+        localStorage.setItem('mojRacun', JSON.stringify(this));
+    }
+
+    static ucitaj() {
+        const saved = localStorage.getItem('mojRacun');
+        if (!saved) return null;
+        const data = JSON.parse(saved);
+        return new Finansije(data.brRacuna, data.ime, data.prezime, data.stanje, data.pin, data.zakljucan, data.transakcije);
+    }
 }
 
-let racun = null;
+let racun = Finansije.ucitaj();
+
+if (racun) {
+    document.getElementById("brRacuna").value = racun.brRacuna;
+    document.getElementById("ime").value = racun.ime;
+    document.getElementById("prezime").value = racun.prezime;
+    document.getElementById("pocetnoStanje").value = racun.stanje;
+    document.getElementById("infoRacun").textContent = `Račun kreiran za ${racun.ime} ${racun.prez}. Stanje: ${racun.stanje} RSD.`;
+}
 
 document.getElementById("kreirajRacun").addEventListener("click", () => {
 
@@ -139,6 +163,7 @@ document.getElementById("kreirajRacun").addEventListener("click", () => {
     }
 
     racun = new Finansije(br, ime, prez, stanje, pin);
+    racun.sacuvaj();
     document.getElementById("infoRacun").textContent = `Račun kreiran za ${ime} ${prez}. Stanje: ${stanje} RSD.`;
 });
 
