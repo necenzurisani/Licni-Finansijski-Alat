@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="sr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lični Finansijski Alat</title>
+    <meta name="description" content="Vaš lični finansijski alat" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+
+            <h1>Lični Finansijski Alat</h1>
+
+            <nav>
+
+                <a href="#pocetna">Početna</a>
+                <a href="#alati">Alati</a>
+                <a href="#kontakt">Kontakt</a>
+
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="pocetna" class="hero active">
+
+            <h1>Dobrodošli!</h1>
+            <p>Dobrodošli na početnu stranicu, klikom na "Alati" možete izabrati odgovarajući alat ili možete postaviti pitanje klikom na "Kontakt".</p>
+
+        </section>
+
+        <section id="alati">
+            <div class="container">
+
+                <h1>Alati</h1>
+                <p>Ovde možete pronaći alate koji će vam olakšati brigu o finansijama.</p>
+
+               <div class="alati-wrapper">
+
+                <div class="alat-card">
+                    <h2>Račun</h2>
+                    <label>Broj računa:</label>
+                    <input id="brRacuna" type="text" placeholder="123-456789-00">
+
+                    <label>Ime vlasnika:</label>
+                    <input id="ime" type="text" placeholder="Ime">
+
+                    <label>Prezime vlasnika:</label>
+                    <input id="prezime" type="text" placeholder="Prezime">
+
+                    <label>Početno stanje (RSD):</label>
+                    <input id="pocetnoStanje" type="number" placeholder="0">
+
+                    <label>PIN (4 cifre):</label>
+                    <input id="pin" type="password" maxlength="4" placeholder="****">
+
+                    <button id="kreirajRacun">Kreiraj račun</button>
+                    <p id="infoRacun" class="info"></p>
+
+                </div>
+
+                <div class="alat-card">
+                    <h2>Prihod</h2>
+                    <label>Iznos (RSD):</label>
+                    <input id="prihodIznos" type="number">
+
+                    <label>Opis:</label>
+                    <input id="prihodOpis" type="text" placeholder="Uplata plate, poklon...">
+                    <button id="dodajPrihod">Dodaj prihod</button>
+
+                </div>
+
+                <div class="alat-card">
+                    <h2>Rashod</h2>
+                    <label>Iznos (RSD):</label>
+                    <input id="rashodIznos" type="number">
+
+                    <label>Opis:</label>
+                    <input id="rashodOpis" type="text" placeholder="Račun za struju, hrana...">
+                    <button id="dodajRashod">Dodaj rashod</button>
+
+                </div>
+
+                <div class="alat-card">
+                    <h2>Štednja</h2>
+                    <label>Izračunaj:</label>
+                    <select id="stednjaOpcija">
+
+                        <option value="1">Konačno stanje</option>
+                        <option value="2">Glavnica</option>
+                        <option value="3">Kamata</option>
+                        <option value="4">Godine</option>
+
+                    </select>
+
+                    <label>Glavnica:</label>
+                    <input id="glavnica" type="number" placeholder="Unesi glavnicu">
+
+                    <label>Kamatna stopa (%):</label>
+                    <input id="kamata" type="number" placeholder="Unesi kamatu">
+
+                    <label>Broj godina:</label>
+                    <input id="godine" type="number" placeholder="Unesi godine">
+
+                    <label>Konačno stanje:</label>
+                    <input id="konacno" type="number" placeholder="Unesi konačno stanje">
+
+                    <button id="izracunajStednju">Izračunaj</button>
+                    <p id="rezultatStednje" class="info"></p>
+
+                </div>
+
+                <div class="alat-card">
+                    <h2>Kredit</h2>
+                    <label>Izračunaj:</label>
+
+                    <select id="kreditOpcija">
+
+                        <option value="1">Iznos kredita</option>
+                        <option value="2">Mesečna rata</option>
+                        <option value="3">Godišnja kamata</option>
+                        <option value="4">Mesečna kamata</option>
+                        <option value="5">Broj godina</option>
+
+                    </select>
+
+                    <label>Iznos kredita:</label>
+                    <input id="iznosKredita" type="number">
+
+                    <label>Mesečna rata:</label>
+                    <input id="mesecnaRata" type="number">
+
+                    <label>Godišnja kamata (%):</label>
+                    <input id="godisnjaKamata" type="number">
+
+                    <label>Broj godina:</label>
+                    <input id="brojGodina" type="number">
+
+                    <button id="izracunajKredit">Izračunaj</button>
+                    <p id="rezultatKredita" class="info"></p>
+
+                </div>
+
+                <div class="alat-card">
+                    <h2>Istorija transakcija</h2>
+                    <button id="prikaziTransakcije">Prikaži transakcije</button>
+                    <ul id="listaTransakcija" class="transakcije"></ul>
+                </div>
+
+                <div class="alat-card">
+                    <h2>Bezbednost</h2>
+
+                    <button id="zakljucaj">Zaključaj račun</button>
+                    <label>PIN za otključavanje:</label>
+
+                    <input id="otkljucajPin" type="password" maxlength="4" placeholder="****">
+                    <button id="otkljucaj">Otključaj račun</button>
+
+                    <p id="statusRacuna" class="info"></p>
+                </div>
+
+            </div>
+
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <div class="container">
+
+                <h1>Kontakt</h1>
+                <p>Unošenjem podataka u naznačena polja, možete nas kontaktirati i dobiti naš odgovor na eventualna pitanja.</p>
+
+            </div>
+
+            <form action="https://formspree.io/f/xldarenl" method="POST">
+                <label>
+
+                    Vaš e-mail:
+                    <input type="email" name="email" required>
+
+                </label>
+
+                <label>
+
+                    Vaša poruka:
+                    <textarea name="message" required></textarea>
+
+                </label>
+
+                <button type="submit">Pošalji</button>
+                
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+
+            <p>&copy; <span id="godina"></span> Lični Finansijski Alat - Mihajlo Ničin <br> +381 064/143-86-00</p>
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

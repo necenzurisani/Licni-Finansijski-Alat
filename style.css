@@ -1,0 +1,389 @@
+/* Osnovni stilovi */
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container {
+
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+
+}
+
+/* Header stilovi */
+header {
+
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+header .container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+header h1 {
+
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+
+}
+
+nav {
+
+    display: flex;
+    gap: 1.5rem;
+
+}
+
+nav a {
+
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+
+}
+
+nav a:hover {
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+/* Glavni sadržaj */
+main {
+
+    flex: 1;
+    padding: 2rem 0;
+
+}
+
+/* Sekcije */
+section {
+
+    padding: 2rem 0;
+    animation: fadeIn 0.5s ease-in;
+
+}
+
+@keyframes fadeIn {
+
+    from { opacity: 0; }
+    to { opacity: 1; }
+
+}
+
+section h1 {
+
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+
+}
+
+section p {
+
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+
+}
+
+/* Hero sekcija */
+.hero {
+
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+
+    padding: 3rem 2rem;
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+
+}
+
+/* Kontakt */
+
+form {
+
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2rem auto 0;
+
+}
+
+label {
+
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+
+}
+
+input, textarea {
+
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+
+}
+
+textarea {
+
+    min-height: 150px;
+    resize: vertical;
+
+}
+
+button {
+
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+button:hover {
+
+    background-color: #2980b9;
+
+}
+
+/* Footer */
+footer {
+
+    background-color: #2c3e50;
+    color: white;
+
+    text-align: center;
+
+    padding: 1.5rem 0;
+    margin-top: auto;
+
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+
+    header .container {
+
+        flex-direction: column;
+        text-align: center;
+
+    }
+    
+    nav {
+
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    
+    section h1 {
+
+        font-size: 1.8rem;
+
+    }
+    
+    .hero h1 {
+
+        font-size: 2rem;
+
+    }
+}
+
+/* Sakrivanje odeljaka */
+
+main section { 
+
+    display: none; 
+
+}
+
+main section.active { 
+
+    display: block; 
+    
+}
+
+.alati-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.alat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.alat-card h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.info {
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.transakcije {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.transakcije li {
+    background: #f8f9fa;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+
+#alati {
+    padding: 2rem 0;
+}
+
+#alati h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.alati-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.alat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alat-card h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    text-align: center;
+}
+
+.alat-card label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.alat-card input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.alat-card button {
+    display: inline-block;
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;  
+}
+
+.alat-card button:hover {
+    background-color: #2980b9;
+}
+
+/* Sekcije sa informacijama i listama */
+.info {
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.transakcije {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.transakcije li {
+    background: #f8f9fa;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
